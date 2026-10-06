@@ -3,383 +3,378 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#182033">
-<title>غذائيات القدور ERP</title>
+<meta name="theme-color" content="#162033">
+<title>غذائيات القدور ERP POS</title>
 <style>
-:root{font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;color:#182033;background:#f5f6f8}
-*{box-sizing:border-box}body{margin:0;background:#f5f6f8}button,input,select,textarea{font:inherit}
-.shell{max-width:1180px;margin:auto;padding:14px}.card{background:#fff;border:1px solid #e0e3e8;border-radius:16px;padding:15px;margin-bottom:12px;box-shadow:0 4px 18px #00000008}
-.login{max-width:440px;margin:8vh auto}.brand{font-size:28px;font-weight:800;margin:0 0 6px}.muted{color:#6e7684;font-size:13px}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}.grow{flex:1;min-width:160px}
-input,select,textarea{width:100%;padding:11px 12px;border:1px solid #cfd4dc;border-radius:10px;background:#fff}textarea{min-height:72px}
-button{border:1px solid #ccd2db;background:#fff;border-radius:10px;padding:10px 14px;cursor:pointer}.primary{background:#182033;color:#fff;border-color:#182033}.danger{background:#8e2323;color:#fff;border-color:#8e2323}
-.top{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #e3e5e8}.topin{max-width:1180px;margin:auto;padding:10px 14px;display:flex;justify-content:space-between;gap:12px;align-items:center}
-.nav{display:flex;gap:7px;overflow:auto;padding:9px 0}.nav button{white-space:nowrap}.nav button.active{background:#182033;color:#fff}
-.hide{display:none!important}.msg{margin-top:12px;white-space:pre-wrap}.error{color:#9d2424}.ok{color:#176b2c}.warnbox{background:#fff6df;border-color:#ecd18a}.dangerbox{background:#fdeaea;border-color:#efb1b1}
-.kpi{font-size:26px;font-weight:800}.section{font-size:18px;font-weight:800;margin-bottom:10px}
-.tablewrap{overflow:auto}.tbl{width:100%;border-collapse:collapse;font-size:14px}.tbl th,.tbl td{padding:8px;border-bottom:1px solid #eee;text-align:right;vertical-align:top}.tbl th{background:#fafafa;position:sticky;top:0}
-.money{font-variant-numeric:tabular-nums;white-space:nowrap}.pill{display:inline-block;border-radius:999px;border:1px solid #d9dde3;padding:3px 8px;font-size:12px}
-.line{display:grid;grid-template-columns:2fr .7fr .9fr auto;gap:7px;align-items:center;margin:7px 0}.toast{position:fixed;left:16px;bottom:16px;z-index:99;background:#182033;color:#fff;padding:12px 14px;border-radius:12px;max-width:360px;display:none}
-@media(max-width:650px){.line{grid-template-columns:1fr 1fr}.line .wide{grid-column:1/-1}.brand{font-size:24px}}
+:root{font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;color:#182033;background:#f4f6f8}
+*{box-sizing:border-box}body{margin:0;background:#f4f6f8}button,input,select,textarea{font:inherit}
+button{cursor:pointer}.hide{display:none!important}.shell{max-width:1240px;margin:auto;padding:12px}
+.top{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid #dfe3e8}.topin{max-width:1240px;margin:auto;padding:9px 12px;display:flex;align-items:center;gap:10px;justify-content:space-between}
+.brand{font-weight:900;font-size:20px}.muted{color:#6f7784;font-size:12px}.online{color:#176b2c}.offline{color:#9d2424}
+.card{background:#fff;border:1px solid #e1e5ea;border-radius:14px;padding:14px;margin-bottom:10px;box-shadow:0 2px 12px #00000008}
+.login{max-width:430px;margin:8vh auto}.login h1{margin:0 0 4px;font-size:28px}
+label{display:block;font-size:13px;margin:7px 0 4px;color:#4d5664}
+input,select,textarea{width:100%;padding:10px 11px;border:1px solid #cbd2dc;border-radius:9px;background:#fff;outline:none}
+input:focus,select:focus,textarea:focus{border-color:#58677d;box-shadow:0 0 0 2px #58677d18}
+textarea{min-height:72px}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.grow{flex:1;min-width:150px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px}
+.btn{border:1px solid #c9d0d9;background:#fff;border-radius:9px;padding:9px 13px}.primary{background:#182033;color:#fff;border-color:#182033}.danger{background:#962f2f;color:#fff;border-color:#962f2f}.okbtn{background:#176b2c;color:#fff;border-color:#176b2c}
+.btn:disabled{opacity:.55;cursor:wait}.nav{display:flex;gap:6px;overflow:auto;padding:8px 0;scrollbar-width:thin}.nav .btn{white-space:nowrap}.nav .active{background:#182033;color:#fff}
+.section{font-size:18px;font-weight:850;margin-bottom:9px}.kpi{font-size:25px;font-weight:900}.pill{display:inline-block;border-radius:999px;padding:3px 8px;border:1px solid #d6dbe2;font-size:12px}
+.warn{background:#fff6dd;border-color:#ead08c}.bad{background:#fdecec;border-color:#efbbbb}.good{background:#eaf7ed;border-color:#b7dbbd}
+.tablewrap{overflow:auto;max-height:65vh}.tbl{width:100%;border-collapse:collapse;font-size:13px}.tbl th,.tbl td{padding:8px;border-bottom:1px solid #edf0f2;text-align:right;vertical-align:middle}.tbl th{position:sticky;top:0;background:#fafbfc;z-index:2}
+.money{font-variant-numeric:tabular-nums;white-space:nowrap}.product-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;max-height:46vh;overflow:auto}
+.product{border:1px solid #dfe4ea;border-radius:11px;padding:10px;background:#fff;cursor:pointer}.product:hover{border-color:#8793a3}.product .name{font-weight:750}.product .price{font-size:18px;font-weight:900;margin-top:5px}
+.line{display:grid;grid-template-columns:minmax(180px,2fr) 95px 120px 110px auto;gap:7px;align-items:center;padding:7px 0;border-bottom:1px solid #eee}
+.cart-total{font-size:28px;font-weight:950;text-align:left;padding:10px 0}.msg{margin-top:10px;white-space:pre-wrap}.error{color:#9d2424}.success{color:#176b2c}
+.toast{position:fixed;left:14px;bottom:14px;z-index:100;background:#182033;color:white;padding:11px 14px;border-radius:10px;display:none;max-width:420px}
+.quickbar{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.quickbar input{font-size:17px}
+.sticky-actions{position:sticky;bottom:0;background:#fff;border-top:1px solid #ddd;padding:10px;margin:0 -14px -14px;z-index:8;border-radius:0 0 14px 14px}
+.small{font-size:12px}.right{text-align:right}.left{text-align:left}
+@media(max-width:700px){
+ .shell{padding:8px}.card{padding:11px;border-radius:12px}.topin{padding:8px}
+ .line{grid-template-columns:1fr 80px 100px}.line .line-name{grid-column:1/-1}.line .line-total{display:none}
+ .product-list{grid-template-columns:repeat(2,minmax(0,1fr));max-height:42vh}
+ .product{padding:8px}.product .price{font-size:16px}
+ .cart-total{font-size:23px}.nav{padding-bottom:6px}
+}
 </style>
 </head>
 <body>
-
 <section id="authView" class="shell">
-  <div class="card login">
-    <h1 class="brand">غذائيات القدور</h1>
-    <p class="muted">نظام المبيعات والمشتريات والمخزون</p>
-    <label>البريد الإلكتروني</label>
-    <input id="authEmail" type="email" autocomplete="email">
-    <br><br>
-    <label>كلمة المرور</label>
-    <input id="authPassword" type="password" autocomplete="current-password">
-    <div class="row" style="margin-top:14px">
-      <button id="loginBtn" class="primary grow" type="button">دخول</button>
-      <button id="signupBtn" class="grow" type="button">إنشاء الحساب</button>
-    </div>
-    <div id="authMsg" class="msg muted"></div>
+ <div class="card login">
+  <h1>غذائيات القدور</h1>
+  <div class="muted">ERP / POS — دخول الموظفين المصرح لهم فقط</div>
+  <label>البريد الإلكتروني</label><input id="authEmail" type="email" autocomplete="email">
+  <label>كلمة المرور</label><input id="authPassword" type="password" autocomplete="current-password">
+  <div class="row" style="margin-top:12px">
+   <button id="loginBtn" class="btn primary grow" type="button">دخول</button>
+   <button id="signupBtn" class="btn grow" type="button">تفعيل حساب موظف</button>
   </div>
+  <div class="muted" style="margin-top:8px">الحساب الجديد لا يحصل على صلاحيات إلا إذا كان بريده مسجلًا مسبقًا كموظف.</div>
+  <div id="authMsg" class="msg muted"></div>
+ </div>
 </section>
 
 <section id="appView" class="hide">
-  <header class="top">
-    <div class="topin">
-      <div><b>غذائيات القدور ERP</b><div id="who" class="muted"></div></div>
-      <button id="logoutBtn" type="button">خروج</button>
-    </div>
-  </header>
-  <div class="shell">
-    <div id="nav" class="nav"></div>
-    <main id="main"></main>
-  </div>
+ <header class="top"><div class="topin">
+  <div><div class="brand">غذائيات القدور ERP</div><div id="who" class="muted"></div></div>
+  <div class="row"><span id="net" class="pill"></span><span id="shiftBadge" class="pill"></span><button id="logoutBtn" class="btn" type="button">خروج</button></div>
+ </div></header>
+ <div class="shell"><div id="nav" class="nav"></div><main id="main"></main></div>
 </section>
 <div id="toast" class="toast"></div>
 
 <script>
 "use strict";
+const BASE="https://sirlzuuqnygrxxvipygx.supabase.co";
+const KEY="sb_publishable_dvgfbh2SiWdg76EN5BawEw_scEcawBX";
+const SESSION_KEY="qudour_erp_session_v3";
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money=v=>Number(v??0).toLocaleString("ar-EG",{maximumFractionDigits:2});
+const qty=v=>Number(v??0).toLocaleString("ar-EG",{maximumFractionDigits:3});
+const today=()=>new Date().toLocaleDateString("en-CA",{timeZone:"Asia/Damascus"});
+const rid=prefix=>prefix+"-"+(crypto.randomUUID?crypto.randomUUID():Date.now()+"-"+Math.random().toString(16).slice(2));
+const S={profile:null,employeeId:null,products:[],parties:[],accounts:[],stores:[],registers:[],categories:[],shift:null,saleCart:[],purchaseCart:[],stock:new Map(),page:"dashboard"};
 
-const SUPABASE_URL = "https://sirlzuuqnygrxxvipygx.supabase.co";
-const SUPABASE_KEY = "sb_publishable_dvgfbh2SiWdg76EN5BawEw_scEcawBX";
-const SESSION_KEY = "qudour_erp_session_v2";
-
-const $ = id => document.getElementById(id);
-const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const num = v => Number(v ?? 0).toLocaleString("ar-EG",{maximumFractionDigits:4});
-const today = () => new Date().toISOString().slice(0,10);
-const showToast = (m,bad=false) => { const t=$("toast"); t.textContent=m; t.style.background=bad?"#9d2424":"#182033"; t.style.display="block"; setTimeout(()=>t.style.display="none",4500); };
-
-function parseError(j,status){
-  if(j && typeof j==="object") return j.message || j.msg || j.error_description || j.error || ("HTTP "+status);
-  return String(j || ("HTTP "+status));
-}
-function readSession(){ try{return JSON.parse(localStorage.getItem(SESSION_KEY)||"null")}catch{return null} }
-function writeSession(s){ if(s)localStorage.setItem(SESSION_KEY,JSON.stringify(s)); else localStorage.removeItem(SESSION_KEY); }
-
-async function rawFetch(path,{method="GET",body=null,headers={},auth=true,retry=true}={}){
-  let s=readSession();
-  if(auth && s?.expires_at && Date.now()/1000 > Number(s.expires_at)-60) s=await refreshSession();
-  const h={apikey:SUPABASE_KEY,...headers};
-  if(auth && s?.access_token) h.authorization="Bearer "+s.access_token;
-  const r=await fetch(SUPABASE_URL+path,{method,headers:h,body:body==null?null:JSON.stringify(body)});
-  if(r.status===401 && retry && auth && readSession()?.refresh_token){
-    const n=await refreshSession();
-    if(n) return rawFetch(path,{method,body,headers,auth,retry:false});
-  }
-  const text=await r.text();
-  let data=null;
-  if(text){try{data=JSON.parse(text)}catch{data=text}}
-  if(!r.ok) throw new Error(parseError(data,r.status));
-  return data;
-}
+function toast(m,bad=false){const t=$("toast");t.textContent=m;t.style.background=bad?"#962f2f":"#182033";t.style.display="block";setTimeout(()=>t.style.display="none",4200)}
+function parseErr(j,status){if(j&&typeof j==="object")return j.message||j.msg||j.error_description||j.error||("HTTP "+status);return String(j||("HTTP "+status))}
+function readSession(){try{return JSON.parse(localStorage.getItem(SESSION_KEY)||"null")}catch{return null}}
+function writeSession(s){if(s)localStorage.setItem(SESSION_KEY,JSON.stringify(s));else localStorage.removeItem(SESSION_KEY)}
 async function refreshSession(){
-  const s=readSession(); if(!s?.refresh_token)return null;
-  try{
-    const r=await fetch(SUPABASE_URL+"/auth/v1/token?grant_type=refresh_token",{
-      method:"POST",headers:{apikey:SUPABASE_KEY,"content-type":"application/json"},
-      body:JSON.stringify({refresh_token:s.refresh_token})
-    });
-    const j=await r.json().catch(()=>({}));
-    if(!r.ok || !j.access_token){writeSession(null);return null}
-    writeSession(j); return j;
-  }catch{writeSession(null);return null}
+ const s=readSession();if(!s?.refresh_token)return null;
+ try{
+  const r=await fetch(BASE+"/auth/v1/token?grant_type=refresh_token",{method:"POST",headers:{apikey:KEY,"content-type":"application/json"},body:JSON.stringify({refresh_token:s.refresh_token})});
+  const j=await r.json().catch(()=>({}));if(!r.ok||!j.access_token){writeSession(null);return null}writeSession(j);return j;
+ }catch{writeSession(null);return null}
+}
+async function api(path,{method="GET",body=null,headers={},auth=true,retry=true}={}){
+ let s=readSession();if(auth&&s?.expires_at&&Date.now()/1000>Number(s.expires_at)-60)s=await refreshSession();
+ const h={apikey:KEY,...headers};if(auth&&s?.access_token)h.authorization="Bearer "+s.access_token;
+ let r;try{r=await fetch(BASE+path,{method,headers:h,body:body===null?null:JSON.stringify(body)})}catch(e){throw new Error("تعذر الاتصال بالخادم. تحقق من الإنترنت ثم أعد المحاولة؛ الطلبات المحمية لن تتكرر إذا استخدمت زر إعادة المحاولة.")}
+ if(r.status===401&&retry&&auth&&readSession()?.refresh_token){const n=await refreshSession();if(n)return api(path,{method,body,headers,auth,retry:false})}
+ const txt=await r.text();let data=null;if(txt){try{data=JSON.parse(txt)}catch{data=txt}}if(!r.ok)throw new Error(parseErr(data,r.status));return data;
+}
+async function rpc(name,args={}){return api("/rest/v1/rpc/"+encodeURIComponent(name),{method:"POST",headers:{"content-type":"application/json"},body:args})}
+async function select(table,{columns="*",filters=[],order=null,limit=null}={}){
+ const u=new URL(BASE+"/rest/v1/"+encodeURIComponent(table));u.searchParams.set("select",columns);
+ for(const [c,op,v] of filters)u.searchParams.append(c,op+"."+String(v));if(order)u.searchParams.set("order",order);if(limit!==null)u.searchParams.set("limit",String(limit));
+ return api(u.pathname+u.search);
 }
 async function signIn(email,password){
-  const r=await fetch(SUPABASE_URL+"/auth/v1/token?grant_type=password",{
-    method:"POST",headers:{apikey:SUPABASE_KEY,"content-type":"application/json"},
-    body:JSON.stringify({email,password})
-  });
-  const j=await r.json().catch(()=>({}));
-  if(!r.ok) throw new Error(parseError(j,r.status));
-  writeSession(j); return j;
+ const r=await fetch(BASE+"/auth/v1/token?grant_type=password",{method:"POST",headers:{apikey:KEY,"content-type":"application/json"},body:JSON.stringify({email,password})});
+ const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(parseErr(j,r.status));writeSession(j);return j;
 }
 async function signUp(email,password){
-  const r=await fetch(SUPABASE_URL+"/auth/v1/signup",{
-    method:"POST",headers:{apikey:SUPABASE_KEY,"content-type":"application/json"},
-    body:JSON.stringify({email,password})
-  });
-  const j=await r.json().catch(()=>({}));
-  if(!r.ok) throw new Error(parseError(j,r.status));
-  if(j.access_token) writeSession(j);
-  return j;
+ const r=await fetch(BASE+"/auth/v1/signup",{method:"POST",headers:{apikey:KEY,"content-type":"application/json"},body:JSON.stringify({email,password})});
+ const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(parseErr(j,r.status));if(j.access_token)writeSession(j);return j;
 }
-async function signOut(){
-  const s=readSession();
-  if(s?.access_token){
-    try{await fetch(SUPABASE_URL+"/auth/v1/logout",{method:"POST",headers:{apikey:SUPABASE_KEY,authorization:"Bearer "+s.access_token}})}catch{}
-  }
-  writeSession(null);
-}
-async function rpc(name,args={}){
-  return rawFetch("/rest/v1/rpc/"+encodeURIComponent(name),{
-    method:"POST",headers:{"content-type":"application/json"},body:args
-  });
-}
-async function select(table,{select="*",filters=[],order=null,limit=null}={}){
-  const u=new URL(SUPABASE_URL+"/rest/v1/"+encodeURIComponent(table));
-  u.searchParams.set("select",select);
-  for(const [col,op,val] of filters)u.searchParams.set(col,op+"."+String(val));
-  if(order)u.searchParams.set("order",order);
-  if(limit!=null)u.searchParams.set("limit",String(limit));
-  return rawFetch(u.pathname+u.search,{method:"GET"});
-}
-async function insert(table,payload){
-  return rawFetch("/rest/v1/"+encodeURIComponent(table),{
-    method:"POST",headers:{"content-type":"application/json","prefer":"return=representation"},body:payload
-  });
-}
+async function signOut(){const s=readSession();if(s?.access_token){try{await fetch(BASE+"/auth/v1/logout",{method:"POST",headers:{apikey:KEY,authorization:"Bearer "+s.access_token}})}catch{}}writeSession(null)}
+function has(k){return !!S.profile?.permissions?.admin||!!S.profile?.permissions?.[k]||["owner","admin"].includes(S.profile?.role)}
+function updateNet(){const n=$("net");if(!n)return;n.textContent=navigator.onLine?"متصل":"بدون اتصال";n.className="pill "+(navigator.onLine?"online":"offline")}
+addEventListener("online",updateNet);addEventListener("offline",updateNet);
+function updateShiftBadge(){const b=$("shiftBadge");if(!b)return;b.textContent=S.shift?"وردية مفتوحة":"لا توجد وردية";b.className="pill "+(S.shift?"online":"offline")}
+async function lockBtn(btn,fn){if(btn.disabled)return;const old=btn.textContent;btn.disabled=true;btn.textContent="جارٍ التنفيذ...";try{return await fn()}finally{btn.disabled=false;btn.textContent=old}}
+function pendingId(key,prefix){let x=sessionStorage.getItem(key);if(!x){x=rid(prefix);sessionStorage.setItem(key,x)}return x}
+function clearPending(key){sessionStorage.removeItem(key)}
 
-const S={profile:null,products:[],parties:[],accounts:[],stores:[],saleCart:[],purchaseCart:[],page:"dashboard"};
-
-$("loginBtn").addEventListener("click", async ()=>{
-  const email=$("authEmail").value.trim(), password=$("authPassword").value;
-  $("authMsg").className="msg muted"; $("authMsg").textContent="جارٍ الدخول...";
-  try{
-    if(!email || !password) throw new Error("أدخل البريد وكلمة المرور.");
-    await signIn(email,password);
-    await startApp();
-  }catch(e){$("authMsg").className="msg error";$("authMsg").textContent=e.message}
+$("loginBtn").onclick=()=>lockBtn($("loginBtn"),async()=>{
+ const email=$("authEmail").value.trim(),password=$("authPassword").value;$("authMsg").textContent="جارٍ التحقق...";$("authMsg").className="msg muted";
+ try{if(!email||!password)throw new Error("أدخل البريد وكلمة المرور.");await signIn(email,password);await startApp()}
+ catch(e){$("authMsg").textContent=e.message;$("authMsg").className="msg error"}
 });
-$("signupBtn").addEventListener("click", async ()=>{
-  const email=$("authEmail").value.trim(), password=$("authPassword").value;
-  $("authMsg").className="msg muted"; $("authMsg").textContent="جارٍ إنشاء الحساب...";
-  try{
-    if(!email || password.length<6) throw new Error("أدخل بريدًا صحيحًا وكلمة مرور من 6 أحرف على الأقل.");
-    const j=await signUp(email,password);
-    if(j.access_token){ await startApp(); }
-    else{$("authMsg").className="msg ok";$("authMsg").textContent="تم إنشاء الحساب. افتح رسالة تأكيد البريد إن وصلت، ثم ارجع وسجّل الدخول."}
-  }catch(e){$("authMsg").className="msg error";$("authMsg").textContent=e.message}
+$("signupBtn").onclick=()=>lockBtn($("signupBtn"),async()=>{
+ const email=$("authEmail").value.trim(),password=$("authPassword").value;$("authMsg").textContent="جارٍ تفعيل الحساب...";$("authMsg").className="msg muted";
+ try{if(!email||password.length<8)throw new Error("استخدم كلمة مرور من 8 أحرف على الأقل.");const j=await signUp(email,password);if(j.access_token)await startApp();else{$("authMsg").textContent="تم إنشاء الحساب. أكد البريد الإلكتروني إن وصلت رسالة ثم سجّل الدخول.";$("authMsg").className="msg success"}}
+ catch(e){$("authMsg").textContent=e.message;$("authMsg").className="msg error"}
 });
-$("logoutBtn").addEventListener("click",async()=>{await signOut();location.reload()});
+$("logoutBtn").onclick=async()=>{await signOut();location.reload()};
 
-async function claimAndProfile(){
-  try{await rpc("claim_employee_account",{})}catch(e){}
-  const p=await rpc("my_profile",{});
-  if(!Array.isArray(p) || !p.length) throw new Error("تم تسجيل الدخول، لكن الحساب غير مربوط بموظف داخل النظام.");
-  return p[0];
+async function claimProfile(){
+ try{await rpc("claim_employee_account",{})}catch{}
+ const p=await rpc("my_profile",{});if(!Array.isArray(p)||!p.length)throw new Error("الحساب غير مربوط بموظف فعال في النظام.");return p[0];
 }
 async function loadBase(){
-  const [pr,pa,ac,st]=await Promise.all([
-    select("v_product_current_prices",{filters:[["status","eq","active"]],order:"name.asc"}),
-    select("parties",{select:"id,party_code,name,is_customer,is_supplier,status",filters:[["status","eq","active"]],order:"name.asc"}),
-    select("financial_accounts",{select:"id,account_code,name,currency,account_type,is_active,opening_balance",filters:[["is_active","eq","true"]]}),
-    select("stores",{select:"id,code,name,is_active",filters:[["is_active","eq","true"]]})
-  ]);
-  S.products=pr||[]; S.parties=pa||[]; S.accounts=ac||[]; S.stores=st||[];
+ S.employeeId=await rpc("current_employee_id",{}).catch(()=>null);
+ const tasks=[
+  select("v_product_current_prices",{filters:[["status","eq","active"]],order:"name.asc"}),
+  select("parties",{columns:"id,party_code,name,is_customer,is_supplier,status",filters:[["status","eq","active"]],order:"name.asc"}),
+  select("financial_accounts",{columns:"id,account_code,name,currency,account_type,is_active",filters:[["is_active","eq","true"]],order:"account_code.asc"}),
+  select("stores",{columns:"id,code,name,is_active",filters:[["is_active","eq","true"]]}),
+  select("pos_registers",{columns:"id,store_id,code,name,is_active",filters:[["is_active","eq","true"]]}).catch(()=>[]),
+  select("expense_categories",{columns:"id,code,name,status",filters:[["status","eq","active"]],order:"sort_order.asc"}).catch(()=>[]),
+  select("v_stock_balance",{columns:"store_id,product_id,quantity,avg_cost_base,inventory_value_base"}).catch(()=>[])
+ ];
+ const [p,pa,a,st,r,c,stock]=await Promise.all(tasks);S.products=p||[];S.parties=pa||[];S.accounts=a||[];S.stores=st||[];S.registers=r||[];S.categories=c||[];
+ S.stock=new Map((stock||[]).map(x=>[(x.store_id||"")+"|"+x.product_id,x]));
+ await refreshShift();
 }
-function hasPerm(k){return !!S.profile?.permissions?.[k] || !!S.profile?.permissions?.admin || S.profile?.role==="owner" || S.profile?.role==="admin";}
-function buildNav(){
-  const items=S.profile?.role==="price_worker" ? [["prices","الأسعار"]] :
-  [["dashboard","الرئيسية"],["sale","بيع سريع"],["purchase","شراء"],["payment","قبض / دفع"],["inventory","المخزون"],["prices","الأسعار"],["debts","الذمم"],["search","بحث"],["reports","التقارير"],["setup","تهيئة"]];
-  $("nav").innerHTML=items.map(([k,l])=>`<button type="button" data-page="${k}">${l}</button>`).join("");
-  $("nav").addEventListener("click",e=>{const b=e.target.closest("button[data-page]");if(b)go(b.dataset.page)});
+async function refreshShift(){
+ if(!S.employeeId){S.shift=null;updateShiftBadge();return}
+ const rows=await select("pos_shifts",{columns:"id,register_id,employee_id,opened_at,status,notes",filters:[["employee_id","eq",S.employeeId],["status","eq","open"]],order:"opened_at.desc",limit:1}).catch(()=>[]);
+ S.shift=rows?.[0]||null;updateShiftBadge();
+}
+function nav(){
+ const items=S.profile?.role==="price_worker"?[["prices","الأسعار"]]:[
+ ["dashboard","الرئيسية"],["shift","الوردية"],["sale","بيع سريع"],["purchase","شراء"],["expense","مصروف"],["payment","قبض/دفع"],["inventory","المخزون والجرد"],["prices","الأسعار"],["debts","الذمم"],["payroll","الموظفون والرواتب"],["search","بحث"],["reports","التقارير"]];
+ $("nav").innerHTML=items.map(([k,l])=>`<button class="btn" data-p="${k}" type="button">${l}</button>`).join("");
+ $("nav").onclick=e=>{const b=e.target.closest("[data-p]");if(b)go(b.dataset.p)};
 }
 async function startApp(){
-  try{
-    const s=readSession();
-    if(!s?.access_token) throw new Error("سجّل الدخول أولاً.");
-    $("authMsg").className="msg muted";
-    $("authMsg").textContent="تم التحقق من الحساب، جارٍ تحميل النظام...";
-    S.profile=await claimAndProfile();
-    if(S.profile.role!=="price_worker") await loadBase();
-    $("who").textContent=(S.profile.name||"")+(S.profile.role?" — "+S.profile.role:"");
-    buildNav();
-    if(S.profile.role==="price_worker") await go("prices");
-    else await go("dashboard");
-    $("authView").classList.add("hide");
-    $("appView").classList.remove("hide");
-  }catch(e){
-    await signOut();
-    $("appView").classList.add("hide");
-    $("authView").classList.remove("hide");
-    $("authMsg").className="msg error";
-    $("authMsg").textContent=e.message;
-  }
+ try{
+  if(!readSession()?.access_token)throw new Error("سجّل الدخول أولًا.");
+  S.profile=await claimProfile();if(S.profile.role!=="price_worker")await loadBase();
+  $("who").textContent=(S.profile.name||"")+" — "+(S.profile.role||"");$("authView").classList.add("hide");$("appView").classList.remove("hide");nav();updateNet();updateShiftBadge();
+  await go(S.profile.role==="price_worker"?"prices":"dashboard");
+ }catch(e){await signOut();$("appView").classList.add("hide");$("authView").classList.remove("hide");$("authMsg").className="msg error";$("authMsg").textContent=e.message}
 }
-async function go(page){
-  S.page=page;
-  document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
-  $("main").innerHTML='<div class="card">جارٍ التحميل...</div>';
-  try{
-    if(page==="dashboard")await renderDashboard();
-    else if(page==="prices")await renderPrices();
-    else if(page==="sale")renderDocument("sale");
-    else if(page==="purchase")renderDocument("purchase");
-    else if(page==="payment")await renderPayment();
-    else if(page==="inventory")await renderInventory();
-    else if(page==="debts")await renderDebts();
-    else if(page==="search")renderSearch();
-    else if(page==="reports")await renderReports();
-    else if(page==="setup")await renderSetup();
-  }catch(e){$("main").innerHTML=`<div class="card dangerbox"><b>خطأ</b><div>${esc(e.message)}</div></div>`}
+async function go(p){
+ S.page=p;document.querySelectorAll("#nav [data-p]").forEach(b=>b.classList.toggle("active",b.dataset.p===p));$("main").innerHTML='<div class="card">جارٍ التحميل...</div>';
+ try{
+  if(p==="dashboard")await renderDashboard();else if(p==="shift")await renderShift();else if(p==="sale")await renderSale();else if(p==="purchase")await renderPurchase();
+  else if(p==="expense")await renderExpense();else if(p==="payment")await renderPayment();else if(p==="inventory")await renderInventory();else if(p==="prices")await renderPrices();
+  else if(p==="debts")await renderDebts();else if(p==="payroll")await renderPayroll();else if(p==="search")renderSearch();else if(p==="reports")await renderReports();
+ }catch(e){$("main").innerHTML=`<div class="card bad"><b>تعذر تحميل القسم</b><div class="msg error">${esc(e.message)}</div></div>`}
 }
+
 async function renderDashboard(){
-  let alerts=[]; try{alerts=await select("v_operational_alerts",{limit:40})}catch{}
-  const critical=alerts.filter(x=>x.severity==="critical").length, warning=alerts.filter(x=>x.severity==="warning").length;
-  $("main").innerHTML=`<div class="grid">
-    <div class="card"><div class="muted">الأصناف النشطة</div><div class="kpi">${S.products.length}</div></div>
-    <div class="card"><div class="muted">الأطراف</div><div class="kpi">${S.parties.length}</div></div>
-    <div class="card"><div class="muted">تنبيهات حرجة</div><div class="kpi">${critical}</div></div>
-    <div class="card"><div class="muted">تحذيرات</div><div class="kpi">${warning}</div></div>
-  </div><div class="card"><div class="section">التنبيهات</div>${alerts.slice(0,20).map(x=>`<div style="padding:7px 0;border-bottom:1px solid #eee">${esc(x.message||"")}</div>`).join("")||'<div class="muted">لا توجد تنبيهات.</div>'}</div>`;
+ const [alerts,shifts,expenses]=await Promise.all([
+  select("v_operational_alerts",{limit:25}).catch(()=>[]),
+  select("v_pos_shift_summary",{order:"opened_at.desc",limit:5}).catch(()=>[]),
+  select("v_expense_summary_monthly",{order:"month.desc",limit:12}).catch(()=>[])
+ ]);
+ $("main").innerHTML=`<div class="grid">
+ <div class="card"><div class="muted">الأصناف</div><div class="kpi">${S.products.length}</div></div>
+ <div class="card"><div class="muted">الأطراف</div><div class="kpi">${S.parties.length}</div></div>
+ <div class="card ${S.shift?"good":"warn"}"><div class="muted">الوردية</div><div class="kpi">${S.shift?"مفتوحة":"مغلقة"}</div></div>
+ <div class="card"><div class="muted">تنبيهات</div><div class="kpi">${alerts.length}</div></div></div>
+ <div class="grid"><div class="card"><div class="section">آخر الورديات</div>${shifts.map(x=>`<div style="padding:6px 0;border-bottom:1px solid #eee">${esc(x.register_code||"")} — ${esc(x.employee_name||"")} — <span class="pill">${esc(x.status)}</span></div>`).join("")||'<div class="muted">لا توجد ورديات بعد.</div>'}</div>
+ <div class="card"><div class="section">المصاريف الشهرية</div>${expenses.slice(0,8).map(x=>`<div style="display:flex;justify-content:space-between;padding:5px 0"><span>${esc(x.category_name||"")}</span><b>${money(x.total_amount)} ${esc(x.currency)}</b></div>`).join("")||'<div class="muted">لا توجد مصاريف بعد.</div>'}</div></div>
+ <div class="card"><div class="section">التنبيهات التشغيلية</div>${alerts.map(x=>`<div style="padding:6px 0;border-bottom:1px solid #eee">${esc(x.message||"")}</div>`).join("")||'<div class="muted">لا توجد تنبيهات.</div>'}</div>`;
 }
-async function renderPrices(){
-  if(!S.products.length && S.profile.role!=="price_worker") await loadBase();
-  $("main").innerHTML=`<div class="card"><div class="section">بحث الأسعار</div><div class="row">
-    <input id="priceQ" class="grow" placeholder="اسم الصنف أو الكود أو الباركود"><button id="priceSearch" class="primary" type="button">بحث</button>
-  </div></div><div id="priceRes"></div>`+
-  (S.profile.role==="price_worker"?"":`<div class="card"><div class="section">تسجيل سعر جديد</div><div class="grid">
-    <select id="priceProd">${S.products.map(p=>`<option value="${esc(p.product_id)}">${esc(p.product_code+" — "+p.name)}</option>`).join("")}</select>
-    <select id="priceType"><option value="sale">سعر بيع</option><option value="purchase_reference">سعر شراء مرجعي</option></select>
-    <select id="priceCur"><option>SYP</option><option>USD</option></select><input id="priceAmt" type="number" step="any" min="0" placeholder="السعر">
-  </div><button id="savePrice" class="primary" style="margin-top:10px" type="button">حفظ السعر</button></div>`);
-  $("priceSearch").addEventListener("click",priceSearch);
-  $("priceQ").addEventListener("keydown",e=>{if(e.key==="Enter")priceSearch()});
-  if($("savePrice"))$("savePrice").addEventListener("click",savePrice);
-  await priceSearch();
+
+async function renderShift(){
+ if(!has("sales")&&!has("closing"))throw new Error("لا توجد صلاحية للوردية.");
+ await refreshShift();
+ if(!S.shift){
+  $("main").innerHTML=`<div class="card good"><div class="section">فتح وردية POS</div><div class="grid">
+   <select id="reg">${S.registers.map(r=>`<option value="${r.id}">${esc(r.code+" — "+r.name)}</option>`).join("")}</select>
+   <input id="openSyp" type="number" min="0" step="any" placeholder="افتتاح SYP" value="0">
+   <input id="openUsd" type="number" min="0" step="any" placeholder="افتتاح USD" value="0">
+  </div><textarea id="shiftNotes" placeholder="ملاحظات الوردية"></textarea><button id="openShift" class="btn primary" style="margin-top:9px" type="button">فتح الوردية</button></div>`;
+  $("openShift").onclick=()=>lockBtn($("openShift"),async()=>{try{
+   const req=pendingId("open_shift_req","SHIFT");
+   await rpc("open_pos_shift",{p_register_id:$("reg").value,p_opening:{SYP:Number($("openSyp").value||0),USD:Number($("openUsd").value||0)},p_client_request_id:req,p_notes:$("shiftNotes").value||null});
+   clearPending("open_shift_req");await refreshShift();toast("تم فتح الوردية");await renderShift();
+  }catch(e){toast(e.message,true)}});return;
+ }
+ const cash=await select("pos_shift_cash",{columns:"currency,opening_amount,expected_close_amount,counted_close_amount,variance",filters:[["shift_id","eq",S.shift.id]]}).catch(()=>[]);
+ $("main").innerHTML=`<div class="card good"><div class="section">الوردية الحالية مفتوحة</div><div class="grid">
+  <div><div class="muted">وقت الفتح</div><b>${esc(new Date(S.shift.opened_at).toLocaleString("ar-EG"))}</b></div>
+  ${cash.map(c=>`<div><div class="muted">افتتاح ${esc(c.currency)}</div><b>${money(c.opening_amount)}</b></div>`).join("")}</div></div>
+ <div class="card"><div class="section">إغلاق الوردية</div><div class="grid"><input id="closeSyp" type="number" min="0" step="any" placeholder="المبلغ المعدود SYP"><input id="closeUsd" type="number" min="0" step="any" placeholder="المبلغ المعدود USD"></div>
+ <textarea id="closeNotes" placeholder="ملاحظات الإغلاق"></textarea><button id="closeShift" class="btn danger" style="margin-top:9px" type="button">إغلاق الوردية</button></div>`;
+ $("closeShift").onclick=()=>lockBtn($("closeShift"),async()=>{if(!confirm("سيتم إغلاق الوردية وتثبيت العد. متابعة؟"))return;try{
+  const counted={};if($("closeSyp").value!=="")counted.SYP=Number($("closeSyp").value);if($("closeUsd").value!=="")counted.USD=Number($("closeUsd").value);
+  await rpc("close_pos_shift",{p_shift_id:S.shift.id,p_counted:counted,p_notes:$("closeNotes").value||null});await refreshShift();toast("تم إغلاق الوردية");await renderShift();
+ }catch(e){toast(e.message,true)}})
 }
-async function priceSearch(){
-  const q=$("priceQ").value.trim(); let data=[];
-  if(S.profile.role==="price_worker") data=await rpc("price_lookup",{p_query:q,p_limit:100});
-  else data=S.products.filter(p=>!q||String(p.name||"").includes(q)||String(p.product_code||"").includes(q)||String(p.barcode||"").includes(q)).slice(0,100);
-  $("priceRes").innerHTML=`<div class="card tablewrap"><table class="tbl"><thead><tr><th>الكود</th><th>الصنف</th><th>سعر البيع</th><th>العملة</th></tr></thead><tbody>
-  ${data.map(p=>`<tr><td>${esc(p.product_code)}</td><td>${esc(p.name)}</td><td>${num(p.sale_price)}</td><td>${esc(p.sale_currency||"")}</td></tr>`).join("")}</tbody></table></div>`;
+
+function partyOpts(kind,allowBlank=false){
+ const list=S.parties.filter(p=>kind==="customer"?p.is_customer:p.is_supplier);return (allowBlank?'<option value="">عميل نقدي افتراضي</option>':"")+list.map(p=>`<option value="${p.id}">${esc(p.party_code+" — "+p.name)}</option>`).join("");
 }
-async function savePrice(){
-  const amount=Number($("priceAmt").value); if(!(amount>=0))return showToast("أدخل سعرًا صحيحًا",true);
-  try{await insert("product_price_history",{product_id:$("priceProd").value,price_type:$("priceType").value,currency:$("priceCur").value,amount,source_type:"qudour_erp_app",notes:"إدخال من واجهة ERP"});showToast("تم حفظ السعر");await loadBase();await renderPrices()}catch(e){showToast(e.message,true)}
+function accountOpts(cur="SYP"){return '<option value="">اختيار تلقائي للصندوق</option>'+S.accounts.filter(a=>!cur||a.currency===cur).map(a=>`<option value="${a.id}">${esc(a.name+" — "+a.currency)}</option>`).join("")}
+function stockFor(productId,storeId=null){const sid=storeId||S.stores[0]?.id||"";return S.stock.get(sid+"|"+productId)||{quantity:0,avg_cost_base:0}}
+function searchProducts(q){
+ q=String(q||"").trim().toLowerCase();if(!q)return S.products.slice(0,60);
+ return S.products.filter(p=>[p.product_code,p.name,p.barcode].some(v=>String(v||"").toLowerCase().includes(q))).slice(0,80);
 }
-function partyOptions(kind){
-  return S.parties.filter(p=>kind==="customer"?p.is_customer:p.is_supplier).map(p=>`<option value="${p.id}">${esc(p.party_code+" — "+p.name)}</option>`).join("");
+function productCards(qv,clickId){
+ return `<div class="product-list">${searchProducts(qv).map(p=>{const st=stockFor(p.product_id);return `<div class="product" data-add="${p.product_id}">
+ <div class="small muted">${esc(p.product_code)} ${p.barcode?(" • "+esc(p.barcode)):""}</div><div class="name">${esc(p.name)}</div><div class="price">${money(p.sale_price)} ${esc(p.sale_currency||"")}</div><div class="small">مخزون: ${qty(st.quantity)}</div></div>`}).join("")}</div>`;
 }
-function productOptions(){return S.products.map(p=>`<option value="${p.product_id}">${esc(p.product_code+" — "+p.name)}</option>`).join("")}
-function renderDocument(kind){
-  const sale=kind==="sale";
-  if(!hasPerm(sale?"sales":"purchases")){$("main").innerHTML='<div class="card dangerbox">لا توجد صلاحية.</div>';return}
-  const cart=sale?S.saleCart:S.purchaseCart;
-  $("main").innerHTML=`<div class="card"><div class="section">${sale?"فاتورة بيع":"فاتورة شراء"}</div><div class="grid">
-    <select id="docParty">${partyOptions(sale?"customer":"supplier")}</select>
-    <select id="docCur"><option>SYP</option><option>USD</option></select>
-    <input id="docDate" type="date" value="${today()}">
-    ${sale?"":'<input id="supplierNo" placeholder="رقم فاتورة المورد">'}
-  </div></div>
-  <div class="card"><div class="row"><select id="docProd" class="grow">${productOptions()}</select><button id="addProd" type="button">إضافة</button></div>
-  <div id="cart"></div><div style="text-align:left;margin-top:10px"><b>الإجمالي: <span id="docTotal">0</span></b></div></div>
-  <div class="card"><div class="section">التسديد</div><select id="settle"><option value="credit">آجل / بدون دفعة</option><option value="cash">نقدي كامل</option></select>
-  <textarea id="docNotes" placeholder="ملاحظات"></textarea><button id="postDoc" class="primary" style="margin-top:10px" type="button">ترحيل الفاتورة</button></div>`;
-  const refresh=()=>{
-    $("cart").innerHTML=cart.length?cart.map((x,i)=>`<div class="line"><div class="wide"><b>${esc(x.name)}</b><div class="muted">${esc(x.code)}</div></div>
-    <input data-q="${i}" type="number" step="any" min="0.0001" value="${x.quantity}"><input data-p="${i}" type="number" step="any" min="0" value="${x.unit_price}">
-    <button data-del="${i}" type="button">حذف</button></div>`).join(""):'<div class="muted">لم تضف أصنافًا بعد.</div>';
-    $("docTotal").textContent=num(cart.reduce((a,b)=>a+b.quantity*b.unit_price,0));
-    $("cart").querySelectorAll("[data-q]").forEach(el=>el.addEventListener("change",()=>{cart[Number(el.dataset.q)].quantity=Number(el.value);refresh()}));
-    $("cart").querySelectorAll("[data-p]").forEach(el=>el.addEventListener("change",()=>{cart[Number(el.dataset.p)].unit_price=Number(el.value);refresh()}));
-    $("cart").querySelectorAll("[data-del]").forEach(el=>el.addEventListener("click",()=>{cart.splice(Number(el.dataset.del),1);refresh()}));
-  };
-  $("addProd").addEventListener("click",()=>{const p=S.products.find(x=>x.product_id===$("docProd").value);if(!p)return;const ex=cart.find(x=>x.product_id===p.product_id);if(ex)ex.quantity+=1;else cart.push({product_id:p.product_id,name:p.name,code:p.product_code,quantity:1,unit_price:Number(sale?p.sale_price:p.purchase_reference)||0});refresh()});
-  $("postDoc").addEventListener("click",async()=>{
-    if(!cart.length)return showToast("أضف صنفًا واحدًا على الأقل",true);
-    const total=cart.reduce((a,b)=>a+b.quantity*b.unit_price,0);
-    if(!confirm("سيتم ترحيل الفاتورة وتثبيت أثرها. متابعة؟"))return;
-    const common={p_party_id:$("docParty").value,p_store_id:null,p_currency:$("docCur").value,p_invoice_date:$("docDate").value,p_lines:cart.map(x=>({product_id:x.product_id,quantity:x.quantity,unit_price:x.unit_price})),p_settlements:$("settle").value==="cash"?[{amount:total,method:"cash"}]:[],p_document_type:"invoice",p_original_invoice_id:null,p_due_date:null,p_notes:$("docNotes").value||null};
-    try{
-      const data=sale?await rpc("create_sales_transaction",{...common,p_external_ref:null}):await rpc("create_purchase_transaction",{...common,p_supplier_invoice_no:$("supplierNo").value||null});
-      showToast("تم ترحيل "+(data?.invoice_no||"الفاتورة")); cart.splice(0,cart.length); await loadBase(); renderDocument(kind);
-    }catch(e){showToast(e.message,true)}
-  });
-  refresh();
+function cartHtml(cart){
+ if(!cart.length)return '<div class="muted">السلة فارغة.</div>';
+ return cart.map((x,i)=>`<div class="line"><div class="line-name"><b>${esc(x.name)}</b><div class="small muted">${esc(x.code)}</div></div>
+ <input data-q="${i}" type="number" step="any" min="0.001" value="${x.quantity}">
+ <input data-p="${i}" type="number" step="any" min="0" value="${x.unit_price}">
+ <div class="line-total money">${money(x.quantity*x.unit_price)}</div><button class="btn" data-del="${i}" type="button">حذف</button></div>`).join("");
 }
+function bindCart(cart,refresh){
+ $("cart").querySelectorAll("[data-q]").forEach(el=>el.onchange=()=>{cart[+el.dataset.q].quantity=Math.max(.001,Number(el.value)||.001);refresh()});
+ $("cart").querySelectorAll("[data-p]").forEach(el=>el.onchange=()=>{cart[+el.dataset.p].unit_price=Math.max(0,Number(el.value)||0);refresh()});
+ $("cart").querySelectorAll("[data-del]").forEach(el=>el.onclick=()=>{cart.splice(+el.dataset.del,1);refresh()});
+}
+async function renderSale(){
+ if(!has("sales"))throw new Error("لا توجد صلاحية مبيعات.");await refreshShift();
+ const cart=S.saleCart;
+ $("main").innerHTML=`${!S.shift?'<div class="card warn"><b>تنبيه:</b> لا توجد وردية POS مفتوحة. افتح وردية قبل التشغيل اليومي.</div>':""}
+ <div class="card"><div class="section">بيع سريع</div><div class="quickbar"><input id="saleSearch" class="grow" autofocus placeholder="امسح الباركود أو اكتب اسم/كود الصنف"><button id="clearSaleQ" class="btn" type="button">مسح</button></div><div id="saleProducts" style="margin-top:9px"></div></div>
+ <div class="card"><div class="section">السلة</div><div id="cart"></div><div class="cart-total">الإجمالي: <span id="total">0</span></div></div>
+ <div class="card"><div class="grid"><select id="saleParty">${partyOpts("customer",true)}</select><select id="saleCur"><option>SYP</option><option>USD</option></select>
+ <input id="salePaid" type="number" min="0" step="any" value="0" placeholder="المبلغ المدفوع الآن"><select id="saleMethod"><option value="cash">نقدي</option><option value="bank_transfer">حوالة</option><option value="check">شيك</option></select><select id="saleAcct">${accountOpts("SYP")}</select></div>
+ <textarea id="saleNotes" placeholder="ملاحظات"></textarea><div class="sticky-actions"><button id="postSale" class="btn primary" style="width:100%" type="button">ترحيل البيع</button></div></div>`;
+ const renderProducts=()=>{$("saleProducts").innerHTML=productCards($("saleSearch").value);$("saleProducts").querySelectorAll("[data-add]").forEach(el=>el.onclick=()=>add(el.dataset.add))};
+ const refresh=()=>{$("cart").innerHTML=cartHtml(cart);$("total").textContent=money(cart.reduce((a,b)=>a+b.quantity*b.unit_price,0));bindCart(cart,refresh)};
+ function add(id){const p=S.products.find(x=>x.product_id===id);if(!p)return;const ex=cart.find(x=>x.product_id===id);if(ex)ex.quantity+=1;else cart.push({product_id:id,name:p.name,code:p.product_code,quantity:1,unit_price:Number(p.sale_price)||0});refresh();$("saleSearch").value="";$("saleSearch").focus();renderProducts()}
+ $("saleSearch").oninput=renderProducts;$("saleSearch").onkeydown=e=>{if(e.key==="Enter"){e.preventDefault();const q=$("saleSearch").value.trim();const exact=S.products.find(p=>p.barcode===q||p.product_code?.toLowerCase()===q.toLowerCase());if(exact)add(exact.product_id);else{const r=searchProducts(q);if(r.length===1)add(r[0].product_id)}}};
+ $("clearSaleQ").onclick=()=>{$("saleSearch").value="";renderProducts();$("saleSearch").focus()};
+ $("saleCur").onchange=()=>{$("saleAcct").innerHTML=accountOpts($("saleCur").value)};
+ $("postSale").onclick=()=>lockBtn($("postSale"),async()=>{
+  try{
+   if(!cart.length)throw new Error("أضف صنفًا إلى السلة.");if(cart.some(x=>!(x.quantity>0)||x.unit_price<0))throw new Error("تحقق من الكميات والأسعار.");
+   const total=cart.reduce((a,b)=>a+b.quantity*b.unit_price,0),paid=Number($("salePaid").value||0);if(paid<0||paid>total)throw new Error("المبلغ المدفوع يجب أن يكون بين صفر وإجمالي الفاتورة.");
+   if(!confirm(`ترحيل فاتورة بيع بقيمة ${money(total)} ${$("saleCur").value}؟`))return;
+   const req=pendingId("sale_req","SALE"),sett=paid>0?[{amount:paid,method:$("saleMethod").value,financial_account_id:$("saleAcct").value||null}]:[];
+   const d=await rpc("create_sales_transaction_v2",{p_party_id:$("saleParty").value||null,p_store_id:S.stores[0]?.id||null,p_currency:$("saleCur").value,p_invoice_date:today(),
+   p_lines:cart.map(x=>({product_id:x.product_id,quantity:x.quantity,unit_price:x.unit_price})),p_settlements:sett,p_document_type:"invoice",p_original_invoice_id:null,p_due_date:null,p_notes:$("saleNotes").value||null,p_external_ref:null,p_pos_shift_id:S.shift?.id||null,p_client_request_id:req});
+   clearPending("sale_req");cart.splice(0);toast("تم ترحيل "+d.invoice_no);await loadBase();await renderSale();
+  }catch(e){toast(e.message,true)}
+ });
+ renderProducts();refresh();
+}
+
+async function renderPurchase(){
+ if(!has("purchases"))throw new Error("لا توجد صلاحية مشتريات.");const cart=S.purchaseCart;
+ $("main").innerHTML=`<div class="card"><div class="section">فاتورة شراء</div><div class="quickbar"><input id="purSearch" class="grow" placeholder="ابحث عن الصنف"><button id="purAdd" class="btn" type="button">إضافة أول نتيجة</button></div><div id="purProducts" style="margin-top:9px"></div></div>
+ <div class="card"><div class="section">البنود</div><div id="cart"></div><div class="cart-total">الإجمالي: <span id="total">0</span></div></div>
+ <div class="card"><div class="grid"><select id="purParty">${partyOpts("supplier")}</select><select id="purCur"><option>SYP</option><option>USD</option></select><input id="supplierNo" placeholder="رقم فاتورة المورد">
+ <input id="purPaid" type="number" min="0" step="any" value="0" placeholder="المبلغ المدفوع الآن"><select id="purMethod"><option value="cash">نقدي</option><option value="bank_transfer">حوالة</option><option value="check">شيك</option></select><select id="purAcct">${accountOpts("SYP")}</select></div>
+ <textarea id="purNotes" placeholder="ملاحظات"></textarea><button id="postPurchase" class="btn primary" style="width:100%;margin-top:9px" type="button">ترحيل الشراء</button></div>`;
+ const products=()=>{$("purProducts").innerHTML=`<div class="product-list">${searchProducts($("purSearch").value).map(p=>`<div class="product" data-add="${p.product_id}"><div class="small muted">${esc(p.product_code)}</div><div class="name">${esc(p.name)}</div><div class="price">${money(p.purchase_reference)} ${esc(p.purchase_currency||"")}</div></div>`).join("")}</div>`;$("purProducts").querySelectorAll("[data-add]").forEach(el=>el.onclick=()=>add(el.dataset.add))};
+ const refresh=()=>{$("cart").innerHTML=cartHtml(cart);$("total").textContent=money(cart.reduce((a,b)=>a+b.quantity*b.unit_price,0));bindCart(cart,refresh)};
+ function add(id){const p=S.products.find(x=>x.product_id===id);if(!p)return;const ex=cart.find(x=>x.product_id===id);if(ex)ex.quantity+=1;else cart.push({product_id:id,name:p.name,code:p.product_code,quantity:1,unit_price:Number(p.purchase_reference)||0});refresh()}
+ $("purSearch").oninput=products;$("purAdd").onclick=()=>{const r=searchProducts($("purSearch").value);if(r[0])add(r[0].product_id)};$("purCur").onchange=()=>{$("purAcct").innerHTML=accountOpts($("purCur").value)};
+ $("postPurchase").onclick=()=>lockBtn($("postPurchase"),async()=>{try{
+  if(!cart.length)throw new Error("أضف صنفًا.");const total=cart.reduce((a,b)=>a+b.quantity*b.unit_price,0),paid=Number($("purPaid").value||0);if(paid<0||paid>total)throw new Error("المبلغ المدفوع غير صحيح.");
+  if(!confirm(`ترحيل فاتورة شراء بقيمة ${money(total)} ${$("purCur").value}؟`))return;
+  const req=pendingId("purchase_req","PUR"),sett=paid>0?[{amount:paid,method:$("purMethod").value,financial_account_id:$("purAcct").value||null}]:[];
+  const d=await rpc("create_purchase_transaction_v2",{p_party_id:$("purParty").value,p_store_id:S.stores[0]?.id||null,p_currency:$("purCur").value,p_invoice_date:today(),
+  p_lines:cart.map(x=>({product_id:x.product_id,quantity:x.quantity,unit_price:x.unit_price})),p_settlements:sett,p_document_type:"invoice",p_original_invoice_id:null,p_due_date:null,p_notes:$("purNotes").value||null,p_supplier_invoice_no:$("supplierNo").value||null,p_pos_shift_id:S.shift?.id||null,p_client_request_id:req});
+  clearPending("purchase_req");cart.splice(0);toast("تم ترحيل "+d.invoice_no);await loadBase();await renderPurchase();
+ }catch(e){toast(e.message,true)}});products();refresh();
+}
+
+async function renderExpense(){
+ if(!has("expenses")&&!has("admin"))throw new Error("لا توجد صلاحية مصاريف.");
+ $("main").innerHTML=`<div class="card"><div class="section">تسجيل مصروف</div><div class="grid">
+ <select id="expCat">${S.categories.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("")}</select><input id="expDesc" placeholder="وصف المصروف">
+ <input id="expBen" placeholder="المستفيد"><select id="expCur"><option>SYP</option><option>USD</option></select><input id="expAmt" type="number" min="0" step="any" placeholder="المبلغ">
+ <select id="expMethod"><option value="cash">نقدي</option><option value="bank_transfer">حوالة</option><option value="other">أخرى</option></select><select id="expAcct">${accountOpts("SYP")}</select><input id="expDate" type="date" value="${today()}">
+ </div><textarea id="expNotes" placeholder="ملاحظات"></textarea><button id="postExp" class="btn primary" style="margin-top:9px" type="button">ترحيل المصروف</button></div>`;
+ $("expCur").onchange=()=>{$("expAcct").innerHTML=accountOpts($("expCur").value)};
+ $("postExp").onclick=()=>lockBtn($("postExp"),async()=>{try{
+  const amt=Number($("expAmt").value);if(!(amt>0)||!$("expDesc").value.trim())throw new Error("أدخل وصفًا ومبلغًا صحيحًا.");if(!confirm("ترحيل المصروف؟"))return;
+  const req=pendingId("expense_req","EXP");const d=await rpc("create_expense_transaction",{p_category_id:$("expCat").value,p_description:$("expDesc").value.trim(),p_currency:$("expCur").value,p_amount:amt,p_method:$("expMethod").value,p_financial_account_id:$("expAcct").value||null,p_store_id:S.stores[0]?.id||null,p_expense_date:$("expDate").value,p_beneficiary:$("expBen").value||null,p_pos_shift_id:S.shift?.id||null,p_client_request_id:req,p_notes:$("expNotes").value||null});
+  clearPending("expense_req");toast("تم ترحيل "+d.expense_no);await renderExpense();
+ }catch(e){toast(e.message,true)}})
+}
+
 async function renderPayment(){
-  if(!hasPerm("payments"))throw new Error("لا توجد صلاحية قبض/دفع.");
-  $("main").innerHTML=`<div class="card"><div class="section">قبض / دفع</div><div class="grid">
-    <select id="payType"><option value="receivable">عميل</option><option value="payable">مورد</option></select>
-    <select id="payDir"><option value="receipt">قبض</option><option value="payment">دفع</option></select>
-    <select id="payParty"></select><select id="payCur"><option>SYP</option><option>USD</option></select>
-    <input id="payAmount" type="number" min="0" step="any" placeholder="المبلغ">
-    <select id="payMethod"><option value="cash">نقدي</option><option value="bank_transfer">حوالة</option><option value="check">شيك</option><option value="other">أخرى</option></select>
-    <input id="payRef" placeholder="رقم مرجع/شيك"><input id="payDate" type="date" value="${today()}">
-  </div><textarea id="payNotes" placeholder="ملاحظات"></textarea><button id="postPay" class="primary" style="margin-top:10px" type="button">ترحيل السند</button></div>`;
-  const refill=()=>{$("payParty").innerHTML=partyOptions($("payType").value==="receivable"?"customer":"supplier")}; refill();
-  $("payType").addEventListener("change",refill);
-  $("postPay").addEventListener("click",async()=>{
-    const amount=Number($("payAmount").value);if(!(amount>0))return showToast("أدخل مبلغًا صحيحًا",true);
-    if(!confirm("سيتم ترحيل السند وتحديث الذمة. متابعة؟"))return;
-    try{
-      const d=await rpc("create_payment_transaction",{p_party_id:$("payParty").value,p_direction:$("payDir").value,p_settlement_account_type:$("payType").value,p_currency:$("payCur").value,p_amount:amount,p_method:$("payMethod").value,p_financial_account_id:null,p_payment_date:$("payDate").value,p_reference_no:$("payRef").value||null,p_check_status:$("payMethod").value==="check"?"pending":null,p_allocation_document_id:null,p_notes:$("payNotes").value||null});
-      showToast("تم ترحيل "+(d?.payment_no||"السند")); await renderPayment();
-    }catch(e){showToast(e.message,true)}
-  });
+ if(!has("payments"))throw new Error("لا توجد صلاحية قبض/دفع.");
+ $("main").innerHTML=`<div class="card"><div class="section">سند قبض / دفع</div><div class="grid">
+ <select id="payType"><option value="receivable">حساب عميل</option><option value="payable">حساب مورد</option></select><select id="payDir"><option value="receipt">قبض</option><option value="payment">دفع</option></select>
+ <select id="payParty"></select><select id="payCur"><option>SYP</option><option>USD</option></select><input id="payAmt" type="number" min="0" step="any" placeholder="المبلغ">
+ <select id="payMethod"><option value="cash">نقدي</option><option value="bank_transfer">حوالة</option><option value="check">شيك</option><option value="other">أخرى</option></select><select id="payAcct">${accountOpts("SYP")}</select><input id="payRef" placeholder="رقم المرجع / الشيك"><input id="payDate" type="date" value="${today()}">
+ </div><textarea id="payNotes" placeholder="ملاحظات"></textarea><button id="postPay" class="btn primary" style="margin-top:9px" type="button">ترحيل السند</button></div>`;
+ const refill=()=>{$("payParty").innerHTML=partyOpts($("payType").value==="receivable"?"customer":"supplier")};refill();$("payType").onchange=refill;$("payCur").onchange=()=>{$("payAcct").innerHTML=accountOpts($("payCur").value)};
+ $("postPay").onclick=()=>lockBtn($("postPay"),async()=>{try{
+  const amt=Number($("payAmt").value);if(!(amt>0))throw new Error("أدخل مبلغًا صحيحًا.");if(!confirm("ترحيل السند وتحديث الذمة؟"))return;
+  const req=pendingId("payment_req","PAY");const d=await rpc("create_payment_transaction_v2",{p_party_id:$("payParty").value,p_direction:$("payDir").value,p_settlement_account_type:$("payType").value,p_currency:$("payCur").value,p_amount:amt,p_method:$("payMethod").value,p_financial_account_id:$("payAcct").value||null,p_payment_date:$("payDate").value,p_reference_no:$("payRef").value||null,p_check_status:$("payMethod").value==="check"?"pending":null,p_allocation_document_id:null,p_notes:$("payNotes").value||null,p_pos_shift_id:S.shift?.id||null,p_client_request_id:req});
+  clearPending("payment_req");toast("تم ترحيل "+d.payment_no);await renderPayment();
+ }catch(e){toast(e.message,true)}})
 }
+
 async function renderInventory(){
-  if(!hasPerm("inventory"))throw new Error("لا توجد صلاحية مخزون.");
-  const data=await select("v_stock_balance",{select:"product_id,quantity,avg_cost_base,inventory_value_base"});
-  const m=new Map((data||[]).map(x=>[x.product_id,x]));
-  $("main").innerHTML=`<div class="card"><div class="section">المخزون الحالي</div><div class="tablewrap"><table class="tbl"><thead><tr><th>الكود</th><th>الصنف</th><th>الكمية</th><th>متوسط التكلفة</th></tr></thead><tbody>
-  ${S.products.map(p=>{const x=m.get(p.product_id)||{};return `<tr><td>${esc(p.product_code)}</td><td>${esc(p.name)}</td><td>${num(x.quantity)}</td><td>${num(x.avg_cost_base)}</td></tr>`}).join("")}
-  </tbody></table></div></div><div class="card warnbox"><b>الجرد الافتتاحي</b><p>لا يتم اعتماد المخزون إلا عبر جرد فعلي. تم إبقاء المخزون القديم خارج التشغيل عمدًا.</p></div>`;
+ if(!has("inventory"))throw new Error("لا توجد صلاحية مخزون.");await loadBase();
+ $("main").innerHTML=`<div class="card"><div class="section">المخزون</div><input id="stockQ" placeholder="بحث"><div id="stockTable" class="tablewrap" style="margin-top:8px"></div></div>
+ <div class="card"><div class="section">جرد فعلي</div><div class="row"><select id="countProd" class="grow">${S.products.map(p=>`<option value="${p.product_id}">${esc(p.product_code+" — "+p.name)}</option>`).join("")}</select><input id="countQty" style="max-width:160px" type="number" step="any" min="0" placeholder="الكمية المعدودة"><button id="addCount" class="btn" type="button">إضافة</button></div><div id="countLines"></div><button id="postCount" class="btn primary" style="margin-top:9px" type="button">ترحيل الجرد</button></div>`;
+ const paint=()=>{const q=$("stockQ").value.trim().toLowerCase();const rows=S.products.filter(p=>!q||p.name.toLowerCase().includes(q)||p.product_code.toLowerCase().includes(q)||String(p.barcode||"").includes(q));$("stockTable").innerHTML=`<table class="tbl"><thead><tr><th>الكود</th><th>الصنف</th><th>الكمية</th><th>متوسط التكلفة</th><th>قيمة المخزون</th></tr></thead><tbody>${rows.map(p=>{const x=stockFor(p.product_id);return `<tr><td>${esc(p.product_code)}</td><td>${esc(p.name)}</td><td>${qty(x.quantity)}</td><td>${money(x.avg_cost_base)}</td><td>${money(x.inventory_value_base)}</td></tr>`}).join("")}</tbody></table>`};$("stockQ").oninput=paint;paint();
+ let lines=[];const lp=()=>{$("countLines").innerHTML=lines.map((x,i)=>`<div class="row" style="padding:6px 0;border-bottom:1px solid #eee"><span class="grow">${esc(x.name)}</span><b>${qty(x.counted_quantity)}</b><button class="btn" data-r="${i}">حذف</button></div>`).join("")||'<div class="muted" style="margin-top:8px">لم تضف بنود جرد.</div>';$("countLines").querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{lines.splice(+b.dataset.r,1);lp()})};lp();
+ $("addCount").onclick=()=>{const p=S.products.find(x=>x.product_id===$("countProd").value),q=Number($("countQty").value);if(!p||q<0||!Number.isFinite(q))return toast("أدخل كمية صحيحة",true);const ex=lines.find(x=>x.product_id===p.product_id);if(ex)ex.counted_quantity=q;else lines.push({product_id:p.product_id,counted_quantity:q,name:p.name});$("countQty").value="";lp()};
+ $("postCount").onclick=()=>lockBtn($("postCount"),async()=>{try{if(!lines.length)throw new Error("أضف بنود الجرد.");if(!confirm("سيتم إنشاء جرد فعلي وقد ينتج عنه فرق مخزون عند الاعتماد. متابعة؟"))return;const req=pendingId("stock_count_req","COUNT");const d=await rpc("create_stock_count_transaction_v2",{p_lines:lines.map(x=>({product_id:x.product_id,counted_quantity:x.counted_quantity})),p_store_id:S.stores[0]?.id||null,p_count_date:today(),p_notes:"جرد من واجهة POS",p_client_request_id:req});clearPending("stock_count_req");toast("تم إنشاء الجرد "+(d.count_no||""));await loadBase();await renderInventory()}catch(e){toast(e.message,true)}})
 }
+
+async function renderPrices(){
+ const qbox=`<div class="card"><div class="section">بحث الأسعار</div><div class="row"><input id="priceQ" class="grow" placeholder="اسم، كود أو باركود"><button id="priceSearch" class="btn primary" type="button">بحث</button></div></div><div id="priceRes"></div>`;
+ $("main").innerHTML=qbox+(S.profile.role==="price_worker"?"":`<div class="card"><div class="section">تحديث سعر</div><div class="grid"><select id="priceProd">${S.products.map(p=>`<option value="${p.product_id}">${esc(p.product_code+" — "+p.name)}</option>`).join("")}</select><select id="priceType"><option value="sale">بيع</option><option value="purchase_reference">شراء مرجعي</option></select><select id="priceCur"><option>SYP</option><option>USD</option></select><input id="priceAmt" type="number" min="0" step="any" placeholder="السعر"></div><button id="savePrice" class="btn primary" style="margin-top:9px" type="button">حفظ</button></div>`);
+ const run=async()=>{let d;if(S.profile.role==="price_worker")d=await rpc("price_lookup",{p_query:$("priceQ").value,p_limit:100});else d=searchProducts($("priceQ").value);$("priceRes").innerHTML=`<div class="card tablewrap"><table class="tbl"><thead><tr><th>الكود</th><th>الصنف</th><th>سعر البيع</th><th>شراء مرجعي</th></tr></thead><tbody>${d.map(p=>`<tr><td>${esc(p.product_code)}</td><td>${esc(p.name)}</td><td>${money(p.sale_price)} ${esc(p.sale_currency||"")}</td><td>${money(p.purchase_reference)} ${esc(p.purchase_currency||"")}</td></tr>`).join("")}</tbody></table></div>`};$("priceSearch").onclick=run;$("priceQ").onkeydown=e=>{if(e.key==="Enter")run()};await run();
+ if($("savePrice"))$("savePrice").onclick=()=>lockBtn($("savePrice"),async()=>{try{const a=Number($("priceAmt").value);if(!(a>=0))throw new Error("سعر غير صحيح.");await api("/rest/v1/product_price_history",{method:"POST",headers:{"content-type":"application/json","prefer":"return=minimal"},body:{product_id:$("priceProd").value,price_type:$("priceType").value,currency:$("priceCur").value,amount:a,source_type:"qudour_pos",notes:"تحديث من ERP POS"}});toast("تم حفظ السعر");await loadBase();await renderPrices()}catch(e){toast(e.message,true)}})
+}
+
 async function renderDebts(){
-  const [b,p]=await Promise.all([select("v_party_balances",{order:"currency.asc"}),select("parties",{select:"id,party_code,name"})]);
-  const pm=new Map((p||[]).map(x=>[x.id,x]));
-  $("main").innerHTML=`<div class="card"><div class="section">الذمم</div><div class="tablewrap"><table class="tbl"><thead><tr><th>الطرف</th><th>الحساب</th><th>العملة</th><th>الرصيد</th></tr></thead><tbody>
-  ${(b||[]).map(x=>`<tr><td>${esc((pm.get(x.party_id)?.party_code||"")+" — "+(pm.get(x.party_id)?.name||""))}</td><td>${esc(x.account_type)}</td><td>${esc(x.currency)}</td><td class="money">${num(x.balance)}</td></tr>`).join("")}
-  </tbody></table></div></div>`;
+ const [b,p]=await Promise.all([select("v_party_balances",{order:"currency.asc"}),select("parties",{columns:"id,party_code,name"})]);const pm=new Map(p.map(x=>[x.id,x]));
+ $("main").innerHTML=`<div class="card"><div class="section">الذمم حسب العملة</div><div class="tablewrap"><table class="tbl"><thead><tr><th>الطرف</th><th>الحساب</th><th>العملة</th><th>الرصيد</th></tr></thead><tbody>${b.map(x=>`<tr><td>${esc((pm.get(x.party_id)?.party_code||"")+" — "+(pm.get(x.party_id)?.name||""))}</td><td>${esc(x.account_type)}</td><td>${esc(x.currency)}</td><td class="money">${money(x.balance)}</td></tr>`).join("")}</tbody></table></div></div>`;
 }
+
+async function renderPayroll(){
+ if(!has("payroll")&&!has("settings")&&!has("admin"))throw new Error("لا توجد صلاحية رواتب.");
+ const [emps,comp,pay]=await Promise.all([select("employees",{columns:"id,employee_code,name,role,status",filters:[["status","eq","active"]],order:"employee_code.asc"}),select("employee_compensation",{order:"effective_from.desc"}).catch(()=>[]),select("employee_payroll",{order:"period_end.desc",limit:60}).catch(()=>[])]);
+ const em=new Map(emps.map(x=>[x.id,x]));
+ $("main").innerHTML=`<div class="grid"><div class="card"><div class="section">إعداد راتب موظف</div><select id="salEmp">${emps.map(e=>`<option value="${e.id}">${esc(e.employee_code+" — "+e.name)}</option>`).join("")}</select><div class="grid"><input id="salFrom" type="date" value="${today()}"><input id="salAmt" type="number" min="0" step="any" placeholder="الراتب الشهري"><select id="salCur"><option>SYP</option><option>USD</option></select></div><button id="saveSal" class="btn primary" style="margin-top:8px" type="button">حفظ إعداد الراتب</button></div>
+ <div class="card"><div class="section">توليد مسير راتب</div><select id="payEmp">${emps.map(e=>`<option value="${e.id}">${esc(e.employee_code+" — "+e.name)}</option>`).join("")}</select><div class="grid"><input id="perStart" type="date"><input id="perEnd" type="date"><input id="bonus" type="number" min="0" value="0" placeholder="مكافأة"><input id="deduct" type="number" min="0" value="0" placeholder="حسم"><input id="advance" type="number" min="0" value="0" placeholder="سلفة"></div><button id="genPayroll" class="btn primary" style="margin-top:8px" type="button">توليد المسير</button></div></div>
+ <div class="card"><div class="section">المسيرات</div><div class="tablewrap"><table class="tbl"><thead><tr><th>الموظف</th><th>الفترة</th><th>الصافي</th><th>الحالة</th><th></th></tr></thead><tbody>${pay.map(x=>`<tr><td>${esc(em.get(x.employee_id)?.name||"")}</td><td>${esc(x.period_start+" → "+x.period_end)}</td><td>${money(x.net_amount)} ${esc(x.currency)}</td><td>${esc(x.status)}</td><td>${x.status!=="paid"?`<button class="btn" data-payroll="${x.id}">دفع</button>`:""}</td></tr>`).join("")}</tbody></table></div></div>`;
+ $("saveSal").onclick=()=>lockBtn($("saveSal"),async()=>{try{const a=Number($("salAmt").value);if(!(a>=0))throw new Error("أدخل راتبًا صحيحًا.");await rpc("set_employee_compensation",{p_employee_id:$("salEmp").value,p_effective_from:$("salFrom").value,p_monthly_salary:a,p_currency:$("salCur").value,p_notes:null});toast("تم حفظ إعداد الراتب");await renderPayroll()}catch(e){toast(e.message,true)}})
+ $("genPayroll").onclick=()=>lockBtn($("genPayroll"),async()=>{try{if(!$("perStart").value||!$("perEnd").value)throw new Error("حدد فترة الراتب.");await rpc("generate_employee_payroll",{p_employee_id:$("payEmp").value,p_period_start:$("perStart").value,p_period_end:$("perEnd").value,p_bonus:Number($("bonus").value||0),p_deduction:Number($("deduct").value||0),p_advance:Number($("advance").value||0),p_notes:null});toast("تم توليد المسير");await renderPayroll()}catch(e){toast(e.message,true)}})
+ document.querySelectorAll("[data-payroll]").forEach(b=>b.onclick=()=>lockBtn(b,async()=>{try{const pr=pay.find(x=>x.id===b.dataset.payroll),acct=S.accounts.find(a=>a.currency===pr.currency&&a.account_type==="cash");if(!acct)throw new Error("لا يوجد صندوق فعال بعملة الراتب.");if(!confirm("دفع الراتب وتسجيله كمصروف؟"))return;const req=rid("PAYROLL");await rpc("pay_employee_payroll",{p_payroll_id:pr.id,p_financial_account_id:acct.id,p_method:"cash",p_pos_shift_id:S.shift?.id||null,p_client_request_id:req,p_notes:null});toast("تم دفع الراتب");await renderPayroll()}catch(e){toast(e.message,true)}}))
+}
+
 function renderSearch(){
-  $("main").innerHTML=`<div class="card"><div class="section">بحث شامل</div><div class="row"><input id="searchQ" class="grow" placeholder="صنف، طرف، فاتورة، سند، كود أو باركود"><button id="doSearch" class="primary" type="button">بحث</button></div></div><div id="searchRes"></div>`;
-  const run=async()=>{try{const d=await rpc("search_erp",{p_query:$("searchQ").value,p_limit:100});$("searchRes").innerHTML=`<div class="card tablewrap"><table class="tbl"><thead><tr><th>النوع</th><th>العنوان</th><th>التفاصيل</th><th>المبلغ</th></tr></thead><tbody>${(d||[]).map(x=>`<tr><td>${esc(x.result_type)}</td><td>${esc(x.title)}</td><td>${esc(x.subtitle||"")}</td><td>${num(x.amount)} ${esc(x.currency||"")}</td></tr>`).join("")}</tbody></table></div>`}catch(e){showToast(e.message,true)}};
-  $("doSearch").addEventListener("click",run);$("searchQ").addEventListener("keydown",e=>{if(e.key==="Enter")run()});
+ $("main").innerHTML=`<div class="card"><div class="section">بحث شامل</div><div class="row"><input id="searchQ" class="grow" placeholder="صنف، طرف، فاتورة، سند، مصدر تاريخي"><button id="doSearch" class="btn primary" type="button">بحث</button></div></div><div id="searchRes"></div>`;
+ const run=async()=>{try{const d=await rpc("search_erp",{p_query:$("searchQ").value,p_limit:100});$("searchRes").innerHTML=`<div class="card tablewrap"><table class="tbl"><thead><tr><th>النوع</th><th>العنوان</th><th>التفاصيل</th><th>المبلغ</th></tr></thead><tbody>${d.map(x=>`<tr><td>${esc(x.result_type)}</td><td>${esc(x.title)}</td><td>${esc(x.subtitle||"")}</td><td>${money(x.amount)} ${esc(x.currency||"")}</td></tr>`).join("")}</tbody></table></div>`}catch(e){toast(e.message,true)}};$("doSearch").onclick=run;$("searchQ").onkeydown=e=>{if(e.key==="Enter")run()}
 }
+
 async function renderReports(){
-  const [cash,so,po]=await Promise.all([
-    select("v_cash_balances",{}).catch(()=>[]),
-    select("v_sales_outstanding",{filters:[["outstanding","gt","0"]]}).catch(()=>[]),
-    select("v_purchase_outstanding",{filters:[["outstanding","gt","0"]]}).catch(()=>[])
-  ]);
-  $("main").innerHTML=`<div class="grid">${(cash||[]).map(x=>`<div class="card"><div class="muted">${esc(x.name+" "+x.currency)}</div><div class="kpi">${num(x.balance)}</div></div>`).join("")}</div>
-  <div class="grid"><div class="card"><div class="section">فواتير العملاء غير المسددة</div>${(so||[]).map(x=>`<div>${esc(x.invoice_no||"")} — ${num(x.outstanding)} ${esc(x.currency)}</div>`).join("")||'<span class="muted">لا يوجد</span>'}</div>
-  <div class="card"><div class="section">فواتير الموردين غير المسددة</div>${(po||[]).map(x=>`<div>${esc(x.invoice_no||"")} — ${num(x.outstanding)} ${esc(x.currency)}</div>`).join("")||'<span class="muted">لا يوجد</span>'}</div></div>`;
-}
-async function renderSetup(){
-  const st=await select("system_settings",{select:"key,value"}).catch(()=>[]);
-  const sm=Object.fromEntries((st||[]).map(x=>[x.key,x.value]));
-  $("main").innerHTML=`<div class="card"><div class="section">حالة الجاهزية</div>
-  ${["fx_confirmed","cash_opening_confirmed","party_opening_confirmed","physical_stock_confirmed"].map(k=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee"><span>${esc(k)}</span><span class="pill">${sm[k]===true?"مؤكد":"غير مؤكد"}</span></div>`).join("")}</div>
-  <div class="card"><div class="section">سعر الصرف</div><input id="fxRate" type="number" step="any" min="0" placeholder="1 USD = ؟ SYP"><button id="confirmFx" class="primary" style="margin-top:8px" type="button">اعتماد سعر الصرف</button></div>
-  <div class="card"><div class="section">رصيد الصندوق الافتتاحي</div><div class="grid"><input id="cashSyp" type="number" min="0" step="any" placeholder="SYP"><input id="cashUsd" type="number" min="0" step="any" placeholder="USD"></div><button id="confirmCash" class="primary" style="margin-top:8px" type="button">اعتماد الرصيد</button></div>`;
-  $("confirmFx").addEventListener("click",async()=>{const r=Number($("fxRate").value);if(!(r>0))return showToast("أدخل سعرًا صحيحًا",true);if(!confirm("اعتماد سعر الصرف؟"))return;try{await rpc("confirm_exchange_rate",{p_rate:r,p_rate_date:today()});showToast("تم الاعتماد");await renderSetup()}catch(e){showToast(e.message,true)}});
-  $("confirmCash").addEventListener("click",async()=>{const s=Number($("cashSyp").value||0),u=Number($("cashUsd").value||0);if(!confirm("اعتماد أرصدة الصندوق؟"))return;try{await rpc("confirm_opening_cash",{p_syp:s,p_usd:u});showToast("تم الاعتماد");await renderSetup()}catch(e){showToast(e.message,true)}});
+ const [cash,so,po,exp,sh]=await Promise.all([select("v_cash_balances",{}).catch(()=>[]),select("v_sales_outstanding",{filters:[["outstanding","gt","0"]]}).catch(()=>[]),select("v_purchase_outstanding",{filters:[["outstanding","gt","0"]]}).catch(()=>[]),select("v_expense_summary_monthly",{order:"month.desc",limit:50}).catch(()=>[]),select("v_pos_shift_summary",{order:"opened_at.desc",limit:25}).catch(()=>[])]);
+ $("main").innerHTML=`<div class="grid">${cash.map(x=>`<div class="card"><div class="muted">${esc(x.name+" — "+x.currency)}</div><div class="kpi">${money(x.balance)}</div></div>`).join("")}</div>
+ <div class="grid"><div class="card"><div class="section">مبيعات غير مسددة</div><b>${so.length}</b></div><div class="card"><div class="section">مشتريات غير مسددة</div><b>${po.length}</b></div><div class="card"><div class="section">ورديات مسجلة</div><b>${sh.length}</b></div></div>
+ <div class="card"><div class="section">المصاريف الشهرية</div><div class="tablewrap"><table class="tbl"><thead><tr><th>الشهر</th><th>التصنيف</th><th>العملة</th><th>الإجمالي</th><th>العدد</th></tr></thead><tbody>${exp.map(x=>`<tr><td>${esc(x.month)}</td><td>${esc(x.category_name)}</td><td>${esc(x.currency)}</td><td>${money(x.total_amount)}</td><td>${x.expense_count}</td></tr>`).join("")}</tbody></table></div></div>`;
 }
 
-window.addEventListener("error",e=>{console.error(e.error||e.message); if(!$("authView").classList.contains("hide")){$("authMsg").className="msg error";$("authMsg").textContent="خطأ تقني: "+e.message}});
-window.addEventListener("unhandledrejection",e=>{console.error(e.reason); if(!$("authView").classList.contains("hide")){$("authMsg").className="msg error";$("authMsg").textContent="خطأ تقني: "+(e.reason?.message||String(e.reason))}});
-
-(async()=>{
-  // لا ندخل تلقائيًا من جلسة قديمة؛ نظهر شاشة الدخول دائمًا لتفادي حالة الصفحة الفارغة.
-  if(readSession()) writeSession(null);
-  $("appView").classList.add("hide");
-  $("authView").classList.remove("hide");
-})();
+window.addEventListener("error",e=>console.error(e.error||e.message));
+window.addEventListener("unhandledrejection",e=>console.error(e.reason));
+(async()=>{updateNet();if(readSession()?.access_token)await startApp()})();
 </script>
 </body>
 </html>
