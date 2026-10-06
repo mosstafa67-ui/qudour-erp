@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>غذائيات القدور ERP</title>
+</head>
+<body>
+<script>
+fetch('https://sirlzuuqnygrxxvipygx.supabase.co/storage/v1/object/public/erp-public/index.html')
+  .then(r => r.text())
+  .then(html => {
+    document.open();
+    document.write(html);
+    document.close();
+  })
+  .catch(() => {
+    document.body.innerHTML =
+      '<h2>تعذر تحميل نظام غذائيات القدور</h2><p>تحقق من الاتصال بالإنترنت ثم أعد المحاولة.</p>';
+  });
+</script>
+</body>
+</html>
