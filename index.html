@@ -196,17 +196,24 @@ function buildNav(){
 }
 async function startApp(){
   try{
-    const s=readSession(); if(!s?.access_token) return;
+    const s=readSession();
+    if(!s?.access_token) throw new Error("سجّل الدخول أولاً.");
+    $("authMsg").className="msg muted";
+    $("authMsg").textContent="تم التحقق من الحساب، جارٍ تحميل النظام...";
     S.profile=await claimAndProfile();
-    $("authView").classList.add("hide"); $("appView").classList.remove("hide");
+    if(S.profile.role!=="price_worker") await loadBase();
     $("who").textContent=(S.profile.name||"")+(S.profile.role?" — "+S.profile.role:"");
     buildNav();
-    if(S.profile.role==="price_worker"){await go("prices");return}
-    await loadBase(); await go("dashboard");
+    if(S.profile.role==="price_worker") await go("prices");
+    else await go("dashboard");
+    $("authView").classList.add("hide");
+    $("appView").classList.remove("hide");
   }catch(e){
     await signOut();
-    $("authView").classList.remove("hide"); $("appView").classList.add("hide");
-    $("authMsg").className="msg error"; $("authMsg").textContent=e.message;
+    $("appView").classList.add("hide");
+    $("authView").classList.remove("hide");
+    $("authMsg").className="msg error";
+    $("authMsg").textContent=e.message;
   }
 }
 async function go(page){
@@ -367,7 +374,12 @@ async function renderSetup(){
 window.addEventListener("error",e=>{console.error(e.error||e.message); if(!$("authView").classList.contains("hide")){$("authMsg").className="msg error";$("authMsg").textContent="خطأ تقني: "+e.message}});
 window.addEventListener("unhandledrejection",e=>{console.error(e.reason); if(!$("authView").classList.contains("hide")){$("authMsg").className="msg error";$("authMsg").textContent="خطأ تقني: "+(e.reason?.message||String(e.reason))}});
 
-(async()=>{if(readSession()?.access_token)await startApp()})();
+(async()=>{
+  // لا ندخل تلقائيًا من جلسة قديمة؛ نظهر شاشة الدخول دائمًا لتفادي حالة الصفحة الفارغة.
+  if(readSession()) writeSession(null);
+  $("appView").classList.add("hide");
+  $("authView").classList.remove("hide");
+})();
 </script>
 </body>
 </html>
