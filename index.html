@@ -2,26 +2,72 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>غذائيات القدور ERP</title>
+<style>
+html,body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:100%;
+  background:#f5f6f8;
+  font-family:Arial,sans-serif;
+}
+#erp{
+  width:100%;
+  height:100%;
+  border:0;
+  display:none;
+}
+#loading{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+  text-align:center;
+  color:#1d2433;
+  padding:20px;
+  box-sizing:border-box;
+}
+</style>
 </head>
 <body>
-<p style="font-family:Arial;text-align:center;margin-top:30vh">
-جارٍ تحميل نظام غذائيات القدور...
-</p>
+
+<div id="loading">جارٍ تشغيل نظام غذائيات القدور...</div>
+<iframe id="erp" title="غذائيات القدور ERP"></iframe>
 
 <script>
-fetch('https://sirlzuuqnygrxxvipygx.supabase.co/storage/v1/object/public/erp-public/index.html',
-      {cache:'no-store'})
-.then(r => r.text())
-.then(html => {
-  const blob = new Blob([html], {type:'text/html;charset=utf-8'});
-  location.replace(URL.createObjectURL(blob));
-})
-.catch(() => {
-  document.body.innerHTML =
-    '<h2 style="text-align:center">تعذر تحميل النظام</h2>';
-});
+(async function () {
+  const loading = document.getElementById('loading');
+  const frame = document.getElementById('erp');
+
+  try {
+    const response = await fetch(
+      'https://sirlzuuqnygrxxvipygx.supabase.co/storage/v1/object/public/erp-public/index.html?v=' + Date.now(),
+      { cache: 'no-store' }
+    );
+
+    if (!response.ok) {
+      throw new Error('HTTP ' + response.status);
+    }
+
+    const html = await response.text();
+
+    frame.onload = function () {
+      loading.style.display = 'none';
+      frame.style.display = 'block';
+    };
+
+    frame.srcdoc = html;
+
+  } catch (e) {
+    loading.innerHTML =
+      '<div><h2>تعذر تشغيل النظام</h2>' +
+      '<p>أعد تحميل الصفحة أو تحقق من اتصال الإنترنت.</p>' +
+      '<small>' + e.message + '</small></div>';
+  }
+})();
 </script>
+
 </body>
 </html>
