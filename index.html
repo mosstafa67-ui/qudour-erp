@@ -5,69 +5,129 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>غذائيات القدور ERP</title>
 <style>
-html,body{
-  margin:0;
-  padding:0;
-  width:100%;
-  height:100%;
-  background:#f5f6f8;
-  font-family:Arial,sans-serif;
-}
-#erp{
-  width:100%;
-  height:100%;
-  border:0;
-  display:none;
-}
-#loading{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100%;
-  text-align:center;
-  color:#1d2433;
-  padding:20px;
-  box-sizing:border-box;
-}
+html,body{margin:0;width:100%;height:100%;background:#f5f6f8;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
+#erp{width:100%;height:100%;border:0;display:none}
+#loading{height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box;color:#1d2433}
+.err{color:#8d1f1f}
 </style>
 </head>
 <body>
-
 <div id="loading">جارٍ تشغيل نظام غذائيات القدور...</div>
 <iframe id="erp" title="غذائيات القدور ERP"></iframe>
-
 <script>
-(async function () {
-  const loading = document.getElementById('loading');
-  const frame = document.getElementById('erp');
-
-  try {
-    const response = await fetch(
-      'https://sirlzuuqnygrxxvipygx.supabase.co/storage/v1/object/public/erp-public/index.html?v=' + Date.now(),
-      { cache: 'no-store' }
-    );
-
-    if (!response.ok) {
-      throw new Error('HTTP ' + response.status);
+function installSupabaseShim(){
+  const STORE='qudour_erp_session_v1';
+  const msg=j=>String(j?.message||j?.msg||j?.error_description||j?.error||'حدث خطأ غير معروف');
+  const err=j=>({message:msg(j)});
+  function createClient(base,key){
+    const cleanBase=String(base).replace(/\/$/,'');
+    const read=()=>{try{return JSON.parse(localStorage.getItem(STORE)||'null')}catch{return null}};
+    const write=s=>{if(s)localStorage.setItem(STORE,JSON.stringify(s));else localStorage.removeItem(STORE)};
+    async function refresh(){
+      const s=read();
+      if(!s?.refresh_token)return null;
+      try{
+        const r=await fetch(cleanBase+'/auth/v1/token?grant_type=refresh_token',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:JSON.stringify({refresh_token:s.refresh_token})});
+        const j=await r.json().catch(()=>({}));
+        if(!r.ok||!j.access_token){write(null);return null}
+        write(j);return j;
+      }catch{return null}
     }
-
-    const html = await response.text();
-
-    frame.onload = function () {
-      loading.style.display = 'none';
-      frame.style.display = 'block';
+    async function session(){
+      let s=read();
+      if(!s?.access_token)return null;
+      if(s.expires_at && Date.now()/1000 > Number(s.expires_at)-60)s=await refresh();
+      return s;
+    }
+    async function headers(extra={}){
+      const s=await session();
+      return {apikey:key,...(s?.access_token?{authorization:'Bearer '+s.access_token}:{}),...extra};
+    }
+    async function request(url,opt={},retry=true){
+      const r=await fetch(url,{...opt,headers:{...(await headers(opt.headers||{}))}});
+      if(r.status===401 && retry && read()?.refresh_token){
+        const s=await refresh();
+        if(s)return request(url,opt,false);
+      }
+      const text=await r.text();
+      let data=null;
+      if(text){try{data=JSON.parse(text)}catch{data=text}}
+      if(!r.ok)return {data:null,error:err(data||{message:'HTTP '+r.status})};
+      return {data,error:null};
+    }
+    class QB{
+      constructor(table){this.table=table;this.sel='*';this.filters=[];this.ord=null;this.lim=null}
+      select(v='*'){this.sel=v;return this}
+      eq(k,v){this.filters.push([k,'eq',v]);return this}
+      gt(k,v){this.filters.push([k,'gt',v]);return this}
+      order(k,o={}){this.ord=[k,o?.ascending!==false?'asc':'desc'];return this}
+      limit(n){this.lim=n;return this}
+      insert(payload){return this._insert(payload)}
+      async _insert(payload){
+        return request(cleanBase+'/rest/v1/'+encodeURIComponent(this.table),{method:'POST',headers:{'content-type':'application/json','prefer':'return=representation'},body:JSON.stringify(payload)});
+      }
+      async _run(){
+        const u=new URL(cleanBase+'/rest/v1/'+encodeURIComponent(this.table));
+        u.searchParams.set('select',this.sel);
+        for(const [k,op,v] of this.filters)u.searchParams.set(k,op+'.'+String(v));
+        if(this.ord)u.searchParams.set('order',this.ord[0]+'.'+this.ord[1]);
+        if(this.lim!=null)u.searchParams.set('limit',String(this.lim));
+        return request(u.toString(),{method:'GET'});
+      }
+      then(a,b){return this._run().then(a,b)}
+    }
+    return {
+      auth:{
+        async signInWithPassword({email,password}){
+          try{
+            const r=await fetch(cleanBase+'/auth/v1/token?grant_type=password',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:JSON.stringify({email,password})});
+            const j=await r.json().catch(()=>({}));
+            if(!r.ok)return {data:{session:null},error:err(j)};
+            write(j);return {data:{session:j,user:j.user||null},error:null};
+          }catch(e){return {data:{session:null},error:{message:e.message}}}
+        },
+        async signUp({email,password}){
+          try{
+            const r=await fetch(cleanBase+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:JSON.stringify({email,password})});
+            const j=await r.json().catch(()=>({}));
+            if(!r.ok)return {data:{session:null},error:err(j)};
+            if(j.access_token)write(j);
+            return {data:{session:j.access_token?j:null,user:j.user||j||null},error:null};
+          }catch(e){return {data:{session:null},error:{message:e.message}}}
+        },
+        async signOut(){
+          const s=read();
+          if(s?.access_token){try{await fetch(cleanBase+'/auth/v1/logout',{method:'POST',headers:{apikey:key,authorization:'Bearer '+s.access_token}})}catch{}}
+          write(null);return {error:null};
+        },
+        async getSession(){return {data:{session:await session()},error:null}}
+      },
+      rpc(name,args={}){return request(cleanBase+'/rest/v1/rpc/'+encodeURIComponent(name),{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(args||{})})},
+      from(table){return new QB(table)}
     };
+  }
+  window.supabase={createClient};
+}
 
-    frame.srcdoc = html;
-
-  } catch (e) {
-    loading.innerHTML =
-      '<div><h2>تعذر تشغيل النظام</h2>' +
-      '<p>أعد تحميل الصفحة أو تحقق من اتصال الإنترنت.</p>' +
-      '<small>' + e.message + '</small></div>';
+(async function boot(){
+  const loading=document.getElementById('loading');
+  const frame=document.getElementById('erp');
+  try{
+    const r=await fetch('https://sirlzuuqnygrxxvipygx.supabase.co/storage/v1/object/public/erp-public/index.html?v='+Date.now(),{cache:'no-store'});
+    if(!r.ok)throw new Error('تعذر تحميل الواجهة: HTTP '+r.status);
+    let html=await r.text();
+    const close='</scr'+'ipt>';
+    const shim='<script>('+installSupabaseShim.toString()+')();'+close;
+    const diag='<script>window.addEventListener("error",function(e){var x=document.getElementById("loginMsg");if(x)x.textContent="خطأ تقني: "+e.message;});window.addEventListener("unhandledrejection",function(e){var x=document.getElementById("loginMsg");if(x)x.textContent="خطأ تقني: "+(e.reason&&e.reason.message?e.reason.message:String(e.reason));});'+close;
+    const re=/<script[^>]+src=["'][^"']*@supabase\/supabase-js@2[^"']*["'][^>]*><\/script>/i;
+    if(!re.test(html))throw new Error('لم يتم العثور على موصل Supabase القديم داخل الواجهة');
+    html=html.replace(re,shim+diag);
+    frame.onload=function(){loading.style.display='none';frame.style.display='block'};
+    frame.srcdoc=html;
+  }catch(e){
+    loading.innerHTML='<div class="err"><h2>تعذر تشغيل النظام</h2><p>'+String(e.message||e)+'</p></div>';
   }
 })();
 </script>
-
 </body>
 </html>
